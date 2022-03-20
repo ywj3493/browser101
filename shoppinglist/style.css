@@ -1,0 +1,36 @@
+nav {
+  display: flex;
+  background-color: aqua;
+  color: white;
+  justify-content: center;
+}
+
+footer {
+  display: flex;
+  background-color: aqua;
+  justify-content: center;
+  align-content: center;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.addBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.deleteBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.addTextField {
+  padding: 5px;
+  height: 20px;
+  border-radius: 10px;
+}
