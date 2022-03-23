@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        display: flex;
+        background-color: aqua;
+        width: 500px;
+        height: 500px;
+        margin: auto;
+      }
+      .inner {
+        display: flex;
+        background-color: yellow;
+        width: 200px;
+        height: 200px;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+      }
+      .button {
+        width: 120px;
+        height: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <button class="button">click me!</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const outer = document.querySelector(".outer");
+    const inner = document.querySelector(".inner");
+    const button = document.querySelector(".button");
+
+    outer.addEventListener("click", (e) => {
+      if (e.currentTarget !== e.target) return;
+      console.dir(`outer: ${event.currentTarget}, ${event.target}`);
+    });
+    inner.addEventListener("click", (e) => {
+      console.dir(`inner: ${event.currentTarget}, ${event.target}`);
+    });
+    button.addEventListener("click", (e) => {
+      console.dir(`button1: ${event.currentTarget}, ${event.target}`);
+      //   e.stopPropagation();
+      //   e.stopImmediatePropagation();
+    });
+    button.addEventListener("click", (e) => {
+      console.dir(`button2: ${event.currentTarget}, ${event.target}`);
+    });
+    button.addEventListener("click", (e) => {
+      console.dir(`button3: ${event.currentTarget}, ${event.target}`);
+    });
+  </script>
+</html>
