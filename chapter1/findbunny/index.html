@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        margin: auto;
+      }
+
+      button {
+        outline: none;
+        background-color: tomato;
+        color: white;
+        font-size: 32px;
+        margin: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="findBtn">Find a rabbit!</button>
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img id="rabbit" src="./img/rabbit.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <img src="./img/carrot.png" alt="" />
+    <script>
+      document.querySelector(".findBtn").addEventListener("click", () => {
+        document
+          .querySelector("#rabbit")
+          .scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    </script>
+  </body>
+</html>

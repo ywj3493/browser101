@@ -1,0 +1,33 @@
+body {
+  background-color: black;
+  margin: 0;
+}
+
+.x-axis {
+  position: absolute;
+  background-color: white;
+  width: 2px;
+  height: 100%;
+}
+
+.y-axis {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  height: 2px;
+}
+
+.targetbox {
+  position: absolute;
+  display: flex;
+}
+
+.coordinate {
+  color: white;
+  align-self: flex-end;
+}
+
+.target {
+  width: auto;
+  height: auto;
+}
