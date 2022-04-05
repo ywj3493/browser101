@@ -1,5 +1,16 @@
 "use strict";
 
+let num = 2;
+let num2 = num;
+
+console.dir(num);
+console.dir(num2);
+
+num2 = 3;
+
+console.dir(num);
+console.dir(num2);
+
 const items = document.querySelector(".items");
 const input = document.querySelector(".footer__input");
 const addBtn = document.querySelector(".footer__button");
