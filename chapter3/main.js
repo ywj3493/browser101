@@ -1,23 +1,5 @@
 "use strict";
 
-const state = {
-  playing: false,
-  timeCounter: 0,
-  carrotCounter: 10,
-  dialog: false,
-  lose: false,
-};
-
-const setState = (key, value) => {
-  state[key] = value;
-};
-
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
-
 const playBtn = document.querySelector(".game__button");
 const clock = document.querySelector(".game__clock");
 const counter = document.querySelector(".game__counter");
@@ -25,7 +7,35 @@ const field = document.querySelector(".field");
 const stopIcon = `<i class="fa-solid fa-stop"></i>`;
 const playIcon = `<i class="fa-solid fa-play"></i>`;
 
-function dialog() {
+const state = {
+  playing: false,
+  timeCounter: 0,
+  carrotCounter: 10,
+  dialog: false,
+  result: false,
+};
+
+function applyState() {
+  playBtn.innerHTML = state.playing ? stopIcon : playIcon;
+  clock.innerHTML = state.timeCounter;
+  counter.innerHTML = state.carrotCounter;
+}
+
+function gameReset() {
+  state.playing = false;
+  state.timeCounter = 0;
+  state.carrotCounter = 10;
+  state.dialog = false;
+  state.result = false;
+}
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+function dialog(message) {
   const element = document.createElement("div");
   element.classList.add("dialog");
   return element;
@@ -64,7 +74,9 @@ function createCarrot(x, y) {
   element.addEventListener("click", () => {
     field.removeChild(element);
     state.carrotCounter = state.carrotCounter - 1;
-    counter.innerHTML = state.carrotCounter;
+    applyState();
+    if (state.carrotCounter == 0) {
+    }
   });
   return element;
 }
@@ -76,7 +88,7 @@ function createCarrot(x, y) {
 const onClickPlayBtn = () => {
   const startClock = () => {
     state.timeCounter = 10;
-    clock.innerHTML = state.timeCounter;
+    applyState();
     var intervalID = setInterval(() => {
       state.timeCounter = state.timeCounter - 1;
       clock.innerHTML = state.timeCounter;
