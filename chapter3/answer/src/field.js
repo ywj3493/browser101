@@ -1,6 +1,13 @@
 "use strict";
 
+import * as sound from "./sound.js";
+
 const CARROT_SIZE = 80;
+
+export const ItemType = Object.freeze({
+  carrot: "carrot",
+  bug: "bug",
+});
 
 export default class Field {
   constructor(carrotCount, bugCount) {
@@ -8,6 +15,9 @@ export default class Field {
     this.bugCount = bugCount;
     this.field = document.querySelector(".game__field");
     this.fieldRect = this.field.getBoundingClientRect();
+    //현 상황에서는 this 정보가 바인딩 되어있지 않아서 제대로 동작 안 함
+    //1안 : this.onClick = this.onClick.bind(this);
+    //2안 : this.field.addEventListner("click", (event) => this.onClick(event));
     this.field.addEventListener("click", this.onClick);
   }
 
@@ -39,24 +49,19 @@ export default class Field {
     this.onItemClick = onItemClick;
   }
 
-  onClick(event) {
+  //3안 onClick 을 변수로 만들어서 사용
+  //onClick = (event) => {};
+  onClick = (event) => {
+    console.dir("onClick");
     const target = event.target;
     if (target.matches(".carrot")) {
       target.remove();
-      playSound(carrotSound);
-      this.onItemClick && this.onItemClick("carrot");
+      sound.playCarrot();
+      this.onItemClick && this.onItemClick(ItemType.carrot);
     } else if (target.matches(".bug")) {
-      this.onItemClick && this.onItemClick("bug");
+      this.onItemClick && this.onItemClick(ItemType.bug);
     }
-  }
-}
-
-const carrotSound = new Audio("assets/sound/carrot_pull.mp3");
-
-function playSound(sound) {
-  //sound 가 항상 처음부터 시작 할 수 있는 것
-  sound.currentTime = 0;
-  sound.play();
+  };
 }
 
 function randomNumber(min, max) {
