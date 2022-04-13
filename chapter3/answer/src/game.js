@@ -9,10 +9,11 @@ export const Reason = Object.freeze({
 });
 
 //Builder Pattern
-export default class GameBuiler {
+export default class GameBuilder {
   gameDuration(duration) {
-    console.dir(duration);
     this.gameDuration = duration;
+    console.dir(this.gameDuration);
+    console.dir(this);
     return this;
   }
 

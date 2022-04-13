@@ -1,11 +1,11 @@
 "use strict";
 
 import PopUp from "./popup.js";
-import GameBuiler, { Reason } from "./game.js";
+import GameBuilder, { Reason } from "./game.js";
 import * as sound from "./sound.js";
 
 const gameFinishBanner = new PopUp();
-const game = new GameBuiler()
+const game = new GameBuilder()
   .gameDuration(5)
   .bugCount(5)
   .carrotCount(5)

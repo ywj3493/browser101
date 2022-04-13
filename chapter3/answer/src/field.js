@@ -15,9 +15,6 @@ export default class Field {
     this.bugCount = bugCount;
     this.field = document.querySelector(".game__field");
     this.fieldRect = this.field.getBoundingClientRect();
-    //현 상황에서는 this 정보가 바인딩 되어있지 않아서 제대로 동작 안 함
-    //1안 : this.onClick = this.onClick.bind(this);
-    //2안 : this.field.addEventListner("click", (event) => this.onClick(event));
     this.field.addEventListener("click", this.onClick);
   }
 
@@ -49,8 +46,6 @@ export default class Field {
     this.onItemClick = onItemClick;
   }
 
-  //3안 onClick 을 변수로 만들어서 사용
-  //onClick = (event) => {};
   onClick = (event) => {
     console.dir("onClick");
     const target = event.target;
